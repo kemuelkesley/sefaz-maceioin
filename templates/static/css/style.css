@@ -1,0 +1,90 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;    
+}
+
+
+:root {
+    --color-orange: #F58428;
+    --color-blue: #14467C;
+    --text-color: #fff;    
+}
+
+body,html {
+    scroll-behavior: smooth;
+    font-family: 'Roboto', sans-serif !important;
+    background-color: #FFF;   
+}
+
+
+.color-header {
+    background-color: var(--color-orange);
+    
+    
+}
+
+.nav-header {
+    background-color: var(--color-blue);
+    
+}
+
+.text-color {
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.logo-prefeitura {
+    height: 60px;
+    width: auto;
+    background-color: white; 
+    padding: 5px; 
+    border-radius: 5px; 
+}
+
+.center-text {
+    text-align: center;
+}
+
+
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #333;
+}
+
+.title-divider {
+    width: 80px;
+    height: 4px;
+    background-color: #f57c00; 
+    border: none;
+    margin: 10px auto 20px;
+}
+
+.section-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: auto;
+}
+
+.image-header {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    /* background-color: #F58428; */
+}
+
+.image-header:hover {
+    transform: scale(1.1);
+}
+
+
+
+
