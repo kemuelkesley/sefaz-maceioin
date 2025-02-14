@@ -65,86 +65,96 @@
     </section>
 
     <section class="container my-5">
-      <h2 class="center-text mb-5">Servidores</h2>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Nome</th>
-            <th>Setor</th>
-            <th>Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>João Silva</td>
-            <td>Tributação</td>
-            <td>joao.silva@maceio.gov.br</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Maria Oliveira</td>
-            <td>Contabilidade</td>
-            <td>maria.oliveira@maceio.gov.br</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Carlos Santos</td>
-            <td>Orçamento</td>
-            <td>carlos.santos@maceio.gov.br</td>
-          </tr>
-        </tbody>
-      </table>
+        <h2 class="text-center mb-5">Servidores</h2>
+        
+        <table class="table table-striped">
+            <thead class="table-header text-white">
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Setor</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                {% for servidor in servidores %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ servidor.nome }}</td>
+                    <td>{{ servidor.setor }}</td>
+                    <td>{{ servidor.email }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">Nenhum servidor na Lista.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </section>
 
-    <!-- Modal - Login -->
-    <div
-      class="modal fade"
-      id="loginModal"
-      tabindex="-1"
-      aria-labelledby="loginModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title text-center" id="loginModalLabel"></h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <label for="text" class="form-label">Usuario</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="text"
-                  placeholder="Digite seu usuario"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Senha</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="password"
-                  placeholder="Digite sua senha"
-                />
-              </div>
-              <button type="submit" class="btn btn-primary w-100">
-                Entrar
-              </button>
-            </form>
-          </div>
+    <!-- Modal de erro (aparece se houver mensagem de erro) -->
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="errorModalLabel">Erro de Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        {% if messages %}
+                            {% for message in messages %}
+                                {{ message }}
+                            {% endfor %}
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
+
+
+
+    <!-- Modal de login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="loginModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{% url 'index' %}" id="loginForm">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Usuário</label>
+                            <input type="text" class="form-control" name="username" id="username" placeholder="Digite seu usuário" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Senha</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Digite sua senha" required />
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                    </form>
+
+                    <!-- Mensagem de erro -->
+                    {% if messages %}
+                        <div class="alert alert-danger mt-2" id="errorMessage">
+                            {% for message in messages %}
+                                <p>{{ message }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 
 
@@ -218,11 +228,23 @@
         </footer>
     </div>
 
-
+   
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+
+
+    <!-- Mostrar o modal de erro se houver mensagem de erro -->
+    {% if messages %}
+    <script>
+        var errorModal = new bootstrap.Modal(document.getElementById('errorModal'), {
+            keyboard: false
+        });
+        errorModal.show();
+    </script>
+    {% endif %}
+    
   </body>
 </html>

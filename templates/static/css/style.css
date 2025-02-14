@@ -184,3 +184,19 @@ body,html {
     background: transparent;
     border: none;
 }
+
+
+.table-header th {
+    background-color: #14467C;
+    color: white;
+    text-align: center; 
+}
+
+.botao-cadastrar {
+    background-color: #F58428;
+    border: none;
+}
+
+.botao-cadastrar:hover {
+    background-color: #14467C; 
+}
