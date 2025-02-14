@@ -9,7 +9,7 @@ def index_view(request):
    
     servidores = Servidor.objects.all()
 
-    # Se o método for POST, tenta realizar o login
+   
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
@@ -73,18 +73,11 @@ def editar_servidor(request, servidor_id):
             form.save()
             return redirect('lista_servidores')
     else:
-        form = ServidorForm(instance=servidor)  # Carrega os dados do servidor no formulário
+        form = ServidorForm(instance=servidor)  
 
     return render(request, 'editar_servidor.html', {'form': form, 'servidor': servidor})
 
 
-# def deletar_servidor(request, servidor_id):
-#     if not request.user.is_authenticated:
-#         return redirect('login')
-
-#     servidor = get_object_or_404(Servidor, id=servidor_id)
-#     servidor.delete()
-#     return redirect('lista_servidores')
 
 
 def deletar_servidor(request, servidor_id):
