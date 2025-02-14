@@ -150,3 +150,37 @@ body,html {
     color: #F58428 !important;
     font-size: 1rem;
 }
+
+/* button modal */
+
+.btn:hover {
+    background-color: #0d3556; /* Tom mais escuro do azul */
+}
+
+/* Cor do input */
+.form-control {
+    border: 1px solid #F58428; /* Laranja */
+    background-color: #fff;
+    color: #333;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-control:focus {
+    border-color: #F58428; /* Laranja */
+    box-shadow: 0 0 5px rgba(245, 132, 40, 0.7);
+}
+
+/* Customização do cabeçalho */
+.modal-header {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+/* Personalizando o fechamento do modal */
+.btn-close {
+    background: transparent;
+    border: none;
+}

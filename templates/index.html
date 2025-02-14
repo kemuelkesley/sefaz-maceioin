@@ -109,7 +109,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title text-center" id="loginModalLabel">Login</h5>
+            <h5 class="modal-title text-center" id="loginModalLabel"></h5>
             <button
               type="button"
               class="btn-close"
@@ -120,12 +120,12 @@
           <div class="modal-body">
             <form>
               <div class="mb-3">
-                <label for="email" class="form-label">Usuario</label>
+                <label for="text" class="form-label">Usuario</label>
                 <input
-                  type="email"
+                  type="text"
                   class="form-control"
-                  id="email"
-                  placeholder="Digite seu email"
+                  id="text"
+                  placeholder="Digite seu usuario"
                 />
               </div>
               <div class="mb-3">
@@ -181,7 +181,7 @@
                     {% comment %} <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg> {% endcomment %}
                     <img src="{% static 'img/logo_prefeitura_de_maceio.svg' %}" width="24" height="24" alt="imagem da logo da prefeitura">
                 </a>
-                <span class="mb-3 mb-md-0 text-body-secondary text-orange">&copy; 2025 Maceio-IN - kemDevelper</span>
+                <span class="mb-3 mb-md-0 text-body-secondary text-orange">&copy; 2025 Maceio-IN</span>
             </div>
 
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
