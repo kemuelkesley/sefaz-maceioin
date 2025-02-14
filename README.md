@@ -90,6 +90,20 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias:
     http://127.0.0.1:8000/
     ```
 
+9 - Imagens do Projeto
+
+- ![image](https://github.com/user-attachments/assets/10c27287-e378-40d6-91a3-cd6089e00dad)
+- ![image](https://github.com/user-attachments/assets/3d082031-467a-4db1-bc17-573f5cedf911)
+- ![image](https://github.com/user-attachments/assets/c7e02ff0-5524-4851-b6a7-70013119426b)
+- ![image](https://github.com/user-attachments/assets/d1cb3bc8-055c-4f4e-8929-dfbc6e1c5127)
+- ![image](https://github.com/user-attachments/assets/cf31d139-ae3e-48af-a640-d4ef90cf23e4)
+
+
+
+
+
+
+
 ## Contribuições
 
 Contribuições são bem-vindas! Se você tiver sugestões, encontrar problemas ou quiser enviar um pull request, sinta-se à vontade para colaborar.
