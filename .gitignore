@@ -12,3 +12,6 @@ db.sqlite3-journal
 *.log
 media/
 staticfiles/
+
+# Configurações do VS Code
+.vscode/
