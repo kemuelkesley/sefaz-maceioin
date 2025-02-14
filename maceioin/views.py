@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from .forms import  ServidorForm
 from .models import Servidor
 
 
@@ -58,6 +59,32 @@ def cadastrar_servidor(request):
 
     return render(request, 'cadastrar_servidor.html')
 
+
+
+def editar_servidor(request, servidor_id):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    servidor = get_object_or_404(Servidor, id=servidor_id)
+
+    if request.method == "POST":
+        form = ServidorForm(request.POST, instance=servidor)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_servidores')
+    else:
+        form = ServidorForm(instance=servidor)  # Carrega os dados do servidor no formulário
+
+    return render(request, 'editar_servidor.html', {'form': form, 'servidor': servidor})
+
+
+def deletar_servidor(request, servidor_id):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    servidor = get_object_or_404(Servidor, id=servidor_id)
+    servidor.delete()
+    return redirect('lista_servidores')
 
 
 def logout_view(request):

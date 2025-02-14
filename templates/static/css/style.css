@@ -154,12 +154,12 @@ body,html {
 /* button modal */
 
 .btn:hover {
-    background-color: #0d3556; /* Tom mais escuro do azul */
+    background-color: #0d3556;
 }
 
 /* Cor do input */
 .form-control {
-    border: 1px solid #F58428; /* Laranja */
+    border: 1px solid #F58428; 
     background-color: #fff;
     color: #333;
     padding: 8px;
@@ -168,7 +168,7 @@ body,html {
 }
 
 .form-control:focus {
-    border-color: #F58428; /* Laranja */
+    border-color: #F58428; 
     box-shadow: 0 0 5px rgba(245, 132, 40, 0.7);
 }
 
@@ -200,3 +200,5 @@ body,html {
 .botao-cadastrar:hover {
     background-color: #14467C; 
 }
+
+

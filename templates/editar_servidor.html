@@ -34,34 +34,33 @@
       
 
     <div class="container mt-5">
-        <h2 class="text-center mb-4">Cadastrar Novo Servidor</h2>
+        <h2 class="text-center mb-4">Editar Servidor</h2>
     
         <form method="post" class="container w-50 p-4 shadow rounded bg-white">
             {% csrf_token %}
+            
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" required>
+                <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" value="{{ form.nome.value }}" required>
             </div>
             
             <div class="mb-3">
                 <label for="setor" class="form-label">Setor</label>
                 <select class="form-control" name="setor" id="setor" required>
                     <option value="">Selecione um setor</option>
-                    <option value="Contabilidade">Contabilidade</option>
-                    <option value="Financeiro">Financeiro</option>
-                    <option value="Atendimento">Atendimento</option>
-                    <option value="Orçamento">Orçamento</option>
-                    <option value="TI">TI</option>
+                    {% for value, label in form.setor.field.choices %}
+                        <option value="{{ value }}" {% if value == form.setor.value %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
                 </select>
             </div>
     
             <div class="mb-3">
                 <label for="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" placeholder="E-mail" name="email" id="email" required>
+                <input type="email" class="form-control" placeholder="E-mail" name="email" id="email" value="{{ form.email.value }}" required>
             </div>
     
             <div class="d-flex justify-content-between">
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
                 <a href="{% url 'lista_servidores' %}" class="btn btn-outline-secondary">Voltar</a>
             </div>
         </form>

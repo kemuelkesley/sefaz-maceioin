@@ -1,15 +1,15 @@
 from django import forms
-from .models import Usuario, Pessoa
+from .models import  Servidor
 
 
-class UsuarioForm(forms.ModelForm):
+# class UsuarioForm(forms.ModelForm):
+#     class Meta:
+#         model = Usuario
+#         fields = ['username', 'password']
+
+class ServidorForm(forms.ModelForm):
     class Meta:
-        model = Usuario
-        fields = ['username', 'password']
-
-class PessoaForm(forms.ModelForm):
-    class Meta:
-        model = Pessoa
+        model = Servidor
         fields = ['nome', 'setor', 'email']
         
                 
