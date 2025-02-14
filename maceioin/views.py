@@ -78,13 +78,26 @@ def editar_servidor(request, servidor_id):
     return render(request, 'editar_servidor.html', {'form': form, 'servidor': servidor})
 
 
+# def deletar_servidor(request, servidor_id):
+#     if not request.user.is_authenticated:
+#         return redirect('login')
+
+#     servidor = get_object_or_404(Servidor, id=servidor_id)
+#     servidor.delete()
+#     return redirect('lista_servidores')
+
+
 def deletar_servidor(request, servidor_id):
     if not request.user.is_authenticated:
         return redirect('login')
 
     servidor = get_object_or_404(Servidor, id=servidor_id)
-    servidor.delete()
-    return redirect('lista_servidores')
+
+    if request.method == "POST":
+        servidor.delete()
+        return redirect('lista_servidores')
+
+    return render(request, 'deletar_servidor.html', {'servidor': servidor})
 
 
 def logout_view(request):
